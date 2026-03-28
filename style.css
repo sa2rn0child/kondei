@@ -6,7 +6,11 @@
     --card-bg: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 
 body {
     font-family: 'Segoe UI', sans-serif;
@@ -14,6 +18,7 @@ body {
     color: var(--text-color);
     background-color: var(--site-bg);
     scroll-behavior: smooth;
+    overflow-x: hidden; /* Защита от вылетания контента вправо */
 }
 
 header {
@@ -33,7 +38,8 @@ nav ul { display: flex; list-style: none; gap: 20px; }
 nav a { text-decoration: none; color: var(--text-color); font-weight: 500; }
 
 .hero {
-    background: url('https://images.unsplash.com/photo-1621905235254-714a275e533c?q=80&w=1600&auto=format&fit=crop');
+    background: linear-gradient(rgba(240, 247, 255, 0.8), rgba(240, 247, 255, 0.8)), 
+                url('https://images.unsplash.com/photo-1621905235254-714a275e533c?q=80&w=1600&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     padding: 60px 5%;
@@ -71,12 +77,30 @@ nav a { text-decoration: none; color: var(--text-color); font-weight: 500; }
 
 .btn:hover { transform: translateY(-3px); background: var(--dark-blue); }
 
-section { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
+section { 
+    padding: 60px 15px; /* Отступы по бокам, чтобы не липло к краям */
+    max-width: 1200px; 
+    margin: 0 auto; /* Центрируем все секции */
+    width: 100%;
+}
+
 h2 { text-align: center; margin-bottom: 40px; color: var(--dark-blue); }
 
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.card { background: var(--card-bg); padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border-bottom: 4px solid var(--primary-blue); }
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px; 
+}
 
+.card { 
+    background: var(--card-bg); 
+    padding: 30px; 
+    border-radius: 15px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03); 
+    border-bottom: 4px solid var(--primary-blue); 
+}
+
+/* ТАБЛИЦЫ: ИСПРАВЛЕННАЯ АДАПТИВНОСТЬ */
 .price-table {
     width: 100%;
     border-collapse: collapse;
@@ -85,44 +109,53 @@ h2 { text-align: center; margin-bottom: 40px; color: var(--dark-blue); }
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    table-layout: fixed; /* Заставляет таблицу вписываться в ширину экрана */
 }
-.price-table th, .price-table td { padding: 15px; border-bottom: 1px solid #eee; text-align: left; }
+
+.price-table th, .price-table td { 
+    padding: 12px 8px; 
+    border-bottom: 1px solid #eee; 
+    text-align: center; /* Центрируем текст для красоты */
+    word-wrap: break-word; /* Перенос слов */
+    white-space: normal;   /* Разрешение переноса строк */
+    font-size: 15px;
+}
+
 .price-table th { background: var(--primary-blue); color: white; }
 
 video {
+    width: 100%;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     background: #000;
 }
 
-#contact { text-align: center; background: var(--card-bg); border-radius: 15px; padding: 40px; }
+#contact { 
+    text-align: center; 
+    background: var(--card-bg); 
+    border-radius: 15px; 
+    padding: 40px; 
+    margin-bottom: 40px;
+}
+
 #contact a { color: var(--primary-blue); text-decoration: none; font-weight: bold; }
 
 footer { background: #222; color: #ccc; text-align: center; padding: 30px; }
 
-/* Адаптация для планшетов и телефонов */
+/* АДАПТАЦИЯ (ПЛАНШЕТЫ) */
 @media (max-width: 992px) {
-    /* Исправляем шапку */
     header {
-        flex-direction: column; /* Ставим логотип и меню друг под другом */
+        flex-direction: column;
         gap: 15px;
         padding: 20px 5%;
     }
 
     nav ul {
-        flex-wrap: wrap; /* Если ссылки не влезут в одну строку, они перенесутся */
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        gap: 10px;
     }
 
-    nav a {
-        font-size: 1rem;
-        padding: 5px 10px;
-        background: #f0f4f8; /* Легкий фон для кнопок меню, чтобы легче нажимать */
-        border-radius: 5px;
-    }
-
-    /* Исправляем главный блок (Hero) */
     .hero-container {
         flex-direction: column;
         text-align: center;
@@ -131,44 +164,21 @@ footer { background: #222; color: #ccc; text-align: center; padding: 30px; }
     .hero-content, .hero-image {
         flex: 0 0 100%;
     }
-
-    .hero-image img {
-        margin-top: 20px;
-        max-width: 90%; /* Чтобы картинка не прилипала к краям экрана */
-    }
 }
 
-/* Дополнительная правка для совсем маленьких экранов (телефонов) */
+/* АДАПТАЦИЯ (ТЕЛЕФОНЫ) */
 @media (max-width: 480px) {
-    .logo {
-        font-size: 1.2rem;
-    }
-    
-    nav ul {
-        gap: 10px;
-    }
+    section { padding: 40px 15px; }
 
-    nav a {
-        font-size: 0.9rem;
+    h1 { font-size: 1.8rem !important; }
+
+    .price-table th, .price-table td {
+        font-size: 13px; /* Уменьшаем шрифт, чтобы текст влезал */
+        padding: 8px 4px;
     }
 
-    h1 {
-        font-size: 1.8rem !important; /* Уменьшаем заголовок, чтобы не занимал весь экран */
-    }
-/* Адаптивность для таблиц на мобилках */
-.price-table {
-    width: 100%;
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-}
-
-section {
-    padding: 20px 15px; /* Добавляем отступы по бокам, чтобы текст не лип к экрану */
-    overflow-x: hidden; /* Запрещаем горизонтальную прокрутку всей страницы */
-}
-
-.price-table td, .price-table th {
-    font-size: 14px; /* Немного уменьшаем шрифт для мобильных */
-    padding: 8px;
+    /* Специальная настройка ширины столбцов для новой таблицы */
+    .price-table th:nth-child(1) { width: 35%; }
+    .price-table th:nth-child(2) { width: 40%; }
+    .price-table th:nth-child(3) { width: 25%; }
 }

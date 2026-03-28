@@ -155,5 +155,20 @@ footer { background: #222; color: #ccc; text-align: center; padding: 30px; }
     h1 {
         font-size: 1.8rem !important; /* Уменьшаем заголовок, чтобы не занимал весь экран */
     }
+/* Адаптивность для таблиц на мобилках */
+.price-table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
 
+section {
+    padding: 20px 15px; /* Добавляем отступы по бокам, чтобы текст не лип к экрану */
+    overflow-x: hidden; /* Запрещаем горизонтальную прокрутку всей страницы */
+}
+
+.price-table td, .price-table th {
+    font-size: 14px; /* Немного уменьшаем шрифт для мобильных */
+    padding: 8px;
 }

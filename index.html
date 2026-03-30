@@ -8,13 +8,18 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Добавим стили прямо здесь, если у вас нет доступа к style.css, 
-           либо скопируйте это в ваш файл стилей */
+        
         .cta-buttons {
-            margin-top: 40px; /* Этот параметр опускает кнопку ниже */
+            margin-top: 40px; 
         }
+        
         .hero-content p {
-            margin-bottom: 20px; /* Расстояние между текстом и кнопкой */
+            margin-bottom: 20px;
+        }
+
+        .download-btn-container {
+            margin-top: 30px;
+            display: inline-block;
         }
     </style>
 </head>
@@ -78,11 +83,13 @@
             <h3>Актуальный прайс-лист</h3>
             <p>Скачайте полный каталог оборудования со склада в Донецке. В файле представлены кондиционеры, обогреватели, системы вентиляции и расходные материалы.</p>
             
-            <a href="ПРОФКЛИМАТИКА_ЯНВАРЬ2026.xlsx" class="btn" download>
-                 Скачать прайс (Excel)
-            </a>
+            <div class="download-btn-container">
+                <a href="ПРОФКЛИМАТИКА_ЯНВАРЬ2026.xlsx" class="btn" download>
+                     Скачать прайс (Excel)
+                </a>
+            </div>
             
-            <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">
+            <p style="margin-top: 30px; font-size: 0.9rem; color: #666;">
                 *Цены в файле являются ориентировочными. <br>
                 Свяжитесь с нами для уточнения персональной скидки!
             </p>
